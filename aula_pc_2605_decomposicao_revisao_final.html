@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pensamento Computacional - Decomposição e Revisão</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 30px;
+      height: 100vh;
+      box-sizing: border-box;
+      font-size: 1.5em;
+    }
+    .slide.active {
+      display: flex;
+    }
+    h1, h2 {
+      font-size: 2.2em;
+    }
+    ul {
+      text-align: left;
+      max-width: 800px;
+    }
+    #navigator {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      font-size: 0.9em;
+    }
+    #navigator button {
+      padding: 4px 10px;
+      font-size: 1em;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide active"><h1>Pensamento Computacional</h1><p>Decomposição e Revisão Geral</p><p><strong>Prof. Edvaldo Rodrigues – UNIPAR</strong></p></div>
+  <div class="slide"><h2>Relembrando os Pilares</h2><ul><li>Decomposição</li><li>Reconhecimento de padrões</li><li>Abstração</li><li>Algoritmos</li></ul></div>
+  <div class="slide"><h2>O que é Decomposição?</h2><p>Dividir um problema complexo em partes menores e mais gerenciáveis.</p><p>Ajuda a organizar e resolver problemas com mais eficiência.</p></div>
+  <div class="slide"><h2>Exemplo Simples</h2><p><strong>Problema:</strong> Fazer um bolo</p><ul><li>Comprar ingredientes</li><li>Preparar a massa</li><li>Untar a forma</li><li>Assar</li><li>Decorar</li></ul></div>
+  <div class="slide"><h2>Atividade em Dupla</h2><p><strong>Desafio:</strong> Organizar uma viagem para um grupo de 10 pessoas</p><ul><li>Liste pelo menos 5 etapas</li><li>Indique onde há padrões, abstração e algoritmos</li></ul></div>
+  <div class="slide"><h2>Revisão Rápida</h2><ul><li>O que é padrão?</li><li>Exemplo de abstração no dia a dia?</li><li>Quando usamos algoritmos?</li><li>Qual a utilidade da decomposição?</li></ul></div>
+  <div class="slide"><h2>✔️ O que é padrão?</h2><p>É a identificação de repetições, semelhanças ou regularidades em dados, situações ou comportamentos.</p><p><em>Exemplo:</em> Horário de pico no trânsito, padrões de senha segura, comportamento de compra.</p></div>
+  <div class="slide"><h2>✔️ Exemplo de abstração no dia a dia</h2><p>Usar um micro-ondas: você só coloca o tempo e aperta um botão, sem pensar nos circuitos eletrônicos.</p><p>Você foca no essencial e ignora os detalhes técnicos.</p></div>
+  <div class="slide"><h2>✔️ Quando usamos algoritmos?</h2><p>Sempre que seguimos uma sequência lógica de passos para resolver um problema ou executar uma tarefa.</p><p><em>Exemplo:</em> Receita de bolo, manual de instruções, passos para cadastrar-se em um site.</p></div>
+  <div class="slide"><h2>✔️ Qual a utilidade da decomposição?</h2><p>Facilita a análise e resolução de problemas complexos.</p><p>Permite que cada parte seja tratada de forma mais simples, isolada e eficiente.</p></div>
+  <div class="slide"><h2>Encerramento</h2>
+<ul><li>Próxima aula (03/06): Oficina prática com fluxograma ou pseudocódigo</li><li>Fiquem atentos às datas das provas!</li></ul></div>
+<div class="slide"><h2>📚 Referências</h2>
+<ul style="font-size: 0.8em; max-width: 800px; text-align: left;">
+  <li>SANTOS, Marcelo S.; MASCHIETTO, Luis G.; SILVA, Fernanda R. <strong>Pensamento Computacional</strong>. Porto Alegre: SAGAH – on-line.</li>
+  <li>LENHARO, Rayane Isadora. <strong>Multiletramentos, tecnologia e aprendizagem</strong>. Curitiba: Contentus – on-line.</li>
+  <li>BRACKMANN, Christian Puhlmann. <strong>Desenvolvimento do Pensamento Computacional Através de Atividades Desplugadas na Educação Básica</strong>. Programa de Pós-Graduação em Informática na Educação, UFRGS.</li>
+  <li><a href="https://developer.mozilla.org/pt-BR/docs/Web" target="_blank">MDN Web Docs</a> – Documentação sobre tecnologias web.</li>
+  <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a> – Conteúdo introdutório sobre lógica, HTML e programação.</li>
+</ul></div><ul><li>Próxima aula (03/06): Oficina prática com fluxograma ou pseudocódigo</li><li>Fiquem atentos às datas das provas!</li></ul></div>
+
+  <div id="navigator">
+    <span id="counter">Slide 1</span>
+    <button onclick="prevSlide()">◀</button>
+    <button onclick="nextSlide()">▶</button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('counter');
+    let current = 0;
+    function showSlide(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      slides[index].classList.add('active');
+      counter.textContent = `Slide ${index + 1} de ${slides.length}`;
+    }
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+    function prevSlide() {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+    showSlide(current);
+  </script>
+</body>
+</html>
